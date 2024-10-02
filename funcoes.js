@@ -1,3 +1,14 @@
+// Função para alternar a visibilidade da tabela
+    function toggleTable(tableId) {
+        var table = document.getElementById(tableId);
+        table.style.display = (table.style.display === "none" || table.style.display === "") ? "table" : "none";
+    }
+
+// Inicializa as tabelas como ocultas
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("profetas").style.display = "none";
+        document.getElementById("gregas").style.display = "none";
+
 // Função para salvar o estado dos checkboxes e a data
 function saveProgress() {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
