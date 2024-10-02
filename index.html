@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Leitura da Bíblia</h1>
+    <h1>LEITURA DA BÍBLIA</h1>
+
 
     <div class="buttons">
         <button onclick="exportProgress()">Exportar Progresso</button>
         <button onclick="document.getElementById('fileInput').click()">Importar Progresso</button>
         <input type="file" id="fileInput" accept=".json" onchange="importProgress(event)">
     </div>
+    <h5>Seu progresso será salvo automaticamente</h5>
+    <h5>Exporte seu progresso, caso mude de disposito</h5>
   
     <h2 onclick="toggleTable('hebraicas')">Escrituras Hebraicas</h2>
     <table id="hebraicas">
@@ -63,12 +66,12 @@
             <tr><td>Sofonias</td><td><input type="checkbox" id="sofonias" onclick="marcarData('sofonias')"></td><td id="sofonias_data"></td></tr>
             <tr><td>Ageu</td><td><input type="checkbox" id="ageu" onclick="marcarData('ageu')"></td><td id="ageu_data"></td></tr>
             <tr><td>Zacarias</td><td><input type="checkbox" id="zacarias" onclick="marcarData('zacarias')"></td><td id="zacarias_data"></td></tr>
-            <tr><td>Malaquias</td><td><input type="checkbox" id="malaquias" onclick="marcarData('malaquias')"></td><td id="malaquias_data"></td></tr
+            <tr><td>Malaquias</td><td><input type="checkbox" id="malaquias" onclick="marcarData('malaquias')"></td><td id="malaquias_data"></td></tr>
         </tbody>
     </table>
 
-    <h2>Escrituras Gregas</h2>
-    <table>
+    <h2 onclick="toggleTable('gregas')">Escrituras Gregas</h2>
+    <table id="gregas">
         <thead>
             <tr>
                 <th>Livro</th>
@@ -78,32 +81,32 @@
         </thead>
         <tbody>
             <tr><td>Mateus</td><td><input type="checkbox" id="mateus" onclick="marcarData('mateus')"></td><td id="mateus_data"></td></tr>
-<tr><td>Marcos</td><td><input type="checkbox" id="marcos" onclick="marcarData('marcos')"></td><td id="marcos_data"></td></tr>
-<tr><td>Lucas</td><td><input type="checkbox" id="lucas" onclick="marcarData('lucas')"></td><td id="lucas_data"></td></tr>
-<tr><td>João</td><td><input type="checkbox" id="joao" onclick="marcarData('joao')"></td><td id="joao_data"></td></tr>
-<tr><td>Atos</td><td><input type="checkbox" id="atos" onclick="marcarData('atos')"></td><td id="atos_data"></td></tr>
-<tr><td>Romanos</td><td><input type="checkbox" id="romanos" onclick="marcarData('romanos')"></td><td id="romanos_data"></td></tr>
-<tr><td>1 Coríntios</td><td><input type="checkbox" id="1corintios" onclick="marcarData('1corintios')"></td><td id="1corintios_data"></td></tr>
-<tr><td>2 Coríntios</td><td><input type="checkbox" id="2corintios" onclick="marcarData('2corintios')"></td><td id="2corintios_data"></td></tr>
-<tr><td>Gálatas</td><td><input type="checkbox" id="galatas" onclick="marcarData('galatas')"></td><td id="galatas_data"></td></tr>
-<tr><td>Efésios</td><td><input type="checkbox" id="efesios" onclick="marcarData('efesios')"></td><td id="efesios_data"></td></tr>
-<tr><td>Filipenses</td><td><input type="checkbox" id="filipenses" onclick="marcarData('filipenses')"></td><td id="filipenses_data"></td></tr>
-<tr><td>Colossenses</td><td><input type="checkbox" id="colossenses" onclick="marcarData('colossenses')"></td><td id="colossenses_data"></td></tr>
-<tr><td>1 Tessalonicenses</td><td><input type="checkbox" id="1tessalonicenses" onclick="marcarData('1tessalonicenses')"></td><td id="1tessalonicenses_data"></td></tr>
-<tr><td>2 Tessalonicenses</td><td><input type="checkbox" id="2tessalonicenses" onclick="marcarData('2tessalonicenses')"></td><td id="2tessalonicenses_data"></td></tr>
-<tr><td>1 Timóteo</td><td><input type="checkbox" id="1timoteo" onclick="marcarData('1timoteo')"></td><td id="1timoteo_data"></td></tr>
-<tr><td>2 Timóteo</td><td><input type="checkbox" id="2timoteo" onclick="marcarData('2timoteo')"></td><td id="2timoteo_data"></td></tr>
-<tr><td>Tito</td><td><input type="checkbox" id="tito" onclick="marcarData('tito')"></td><td id="tito_data"></td></tr>
-<tr><td>Filemom</td><td><input type="checkbox" id="filemom" onclick="marcarData('filemom')"></td><td id="filemom_data"></td></tr>
-<tr><td>Hebreus</td><td><input type="checkbox" id="hebreus" onclick="marcarData('hebreus')"></td><td id="hebreus_data"></td></tr>
-<tr><td>Tiago</td><td><input type="checkbox" id="tiago" onclick="marcarData('tiago')"></td><td id="tiago_data"></td></tr>
-<tr><td>1 Pedro</td><td><input type="checkbox" id="1pedro" onclick="marcarData('1pedro')"></td><td id="1pedro_data"></td></tr>
-<tr><td>2 Pedro</td><td><input type="checkbox" id="2pedro" onclick="marcarData('2pedro')"></td><td id="2pedro_data"></td></tr>
-<tr><td>1 João</td><td><input type="checkbox" id="1joao" onclick="marcarData('1joao')"></td><td id="1joao_data"></td></tr>
-<tr><td>2 João</td><td><input type="checkbox" id="2joao" onclick="marcarData('2joao')"></td><td id="2joao_data"></td></tr>
-<tr><td>3 João</td><td><input type="checkbox" id="3joao" onclick="marcarData('3joao')"></td><td id="3joao_data"></td></tr>
-<tr><td>Judas</td><td><input type="checkbox" id="judas" onclick="marcarData('judas')"></td><td id="judas_data"></td></tr>
-<tr><td>Apocalipse</td><td><input type="checkbox" id="apocalipse" onclick="marcarData('apocalipse')"></td><td id="apocalipse_data"></td></tr>
+            <tr><td>Marcos</td><td><input type="checkbox" id="marcos" onclick="marcarData('marcos')"></td><td id="marcos_data"></td></tr>
+            <tr><td>Lucas</td><td><input type="checkbox" id="lucas" onclick="marcarData('lucas')"></td><td id="lucas_data"></td></tr>
+            <tr><td>João</td><td><input type="checkbox" id="joao" onclick="marcarData('joao')"></td><td id="joao_data"></td></tr>
+            <tr><td>Atos</td><td><input type="checkbox" id="atos" onclick="marcarData('atos')"></td><td id="atos_data"></td></tr>
+            <tr><td>Romanos</td><td><input type="checkbox" id="romanos" onclick="marcarData('romanos')"></td><td id="romanos_data"></td></tr>
+            <tr><td>1 Coríntios</td><td><input type="checkbox" id="1corintios" onclick="marcarData('1corintios')"></td><td id="1corintios_data"></td></tr>
+            <tr><td>2 Coríntios</td><td><input type="checkbox" id="2corintios" onclick="marcarData('2corintios')"></td><td id="2corintios_data"></td></tr>
+            <tr><td>Gálatas</td><td><input type="checkbox" id="galatas" onclick="marcarData('galatas')"></td><td id="galatas_data"></td></tr>
+            <tr><td>Efésios</td><td><input type="checkbox" id="efesios" onclick="marcarData('efesios')"></td><td id="efesios_data"></td></tr>
+            <tr><td>Filipenses</td><td><input type="checkbox" id="filipenses" onclick="marcarData('filipenses')"></td><td id="filipenses_data"></td></tr>
+            <tr><td>Colossenses</td><td><input type="checkbox" id="colossenses" onclick="marcarData('colossenses')"></td><td id="colossenses_data"></td></tr>
+            <tr><td>1 Tessalonicenses</td><td><input type="checkbox" id="1tessalonicenses" onclick="marcarData('1tessalonicenses')"></td><td id="1tessalonicenses_data"></td></tr>
+            <tr><td>2 Tessalonicenses</td><td><input type="checkbox" id="2tessalonicenses" onclick="marcarData('2tessalonicenses')"></td><td id="2tessalonicenses_data"></td></tr>
+            <tr><td>1 Timóteo</td><td><input type="checkbox" id="1timoteo" onclick="marcarData('1timoteo')"></td><td id="1timoteo_data"></td></tr>
+            <tr><td>2 Timóteo</td><td><input type="checkbox" id="2timoteo" onclick="marcarData('2timoteo')"></td><td id="2timoteo_data"></td></tr>
+            <tr><td>Tito</td><td><input type="checkbox" id="tito" onclick="marcarData('tito')"></td><td id="tito_data"></td></tr>
+            <tr><td>Filemom</td><td><input type="checkbox" id="filemom" onclick="marcarData('filemom')"></td><td id="filemom_data"></td></tr>
+            <tr><td>Hebreus</td><td><input type="checkbox" id="hebreus" onclick="marcarData('hebreus')"></td><td id="hebreus_data"></td></tr>
+            <tr><td>Tiago</td><td><input type="checkbox" id="tiago" onclick="marcarData('tiago')"></td><td id="tiago_data"></td></tr>
+            <tr><td>1 Pedro</td><td><input type="checkbox" id="1pedro" onclick="marcarData('1pedro')"></td><td id="1pedro_data"></td></tr>
+            <tr><td>2 Pedro</td><td><input type="checkbox" id="2pedro" onclick="marcarData('2pedro')"></td><td id="2pedro_data"></td></tr>
+            <tr><td>1 João</td><td><input type="checkbox" id="1joao" onclick="marcarData('1joao')"></td><td id="1joao_data"></td></tr>
+            <tr><td>2 João</td><td><input type="checkbox" id="2joao" onclick="marcarData('2joao')"></td><td id="2joao_data"></td></tr>
+            <tr><td>3 João</td><td><input type="checkbox" id="3joao" onclick="marcarData('3joao')"></td><td id="3joao_data"></td></tr>
+            <tr><td>Judas</td><td><input type="checkbox" id="judas" onclick="marcarData('judas')"></td><td id="judas_data"></td></tr>
+            <tr><td>Apocalipse</td><td><input type="checkbox" id="apocalipse" onclick="marcarData('apocalipse')"></td><td id="apocalipse_data"></td></tr>
         </tbody>
     </table>
 
