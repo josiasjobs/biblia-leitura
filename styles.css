@@ -1,65 +1,124 @@
+/* Estilos básicos */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    margin: 20px;
-    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4; /* Fundo suave */
+    color: #333; /* Texto escuro para melhor legibilidade */
+    margin: 0;
+    padding: 20px; /* Espaçamento ao redor do conteúdo */
 }
+
 
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: #16a085; /* Cor mais escura e chique para títulos */
+    
+   
 }
 
+
 h2 {
-    color: #16a085;
     text-align: left;
+    color: #16a085; /* Cor mais escura e chique para títulos */
     border-bottom: 2px solid #16a085;
-    padding-bottom: 5px;
-    margin-top: 30px;
+    margin-bottom: 20px;
 }
+
+
 
 h5 {
     text-align: center;
-    color: #848586;
+    color: #848586; /* Cor mais escura e chique para títulos */
+    
 }
 
 table {
     width: 100%;
+    margin-bottom: 20px;
     border-collapse: collapse;
-    margin-top: 20px;
-    display: none; /* Esconder tabelas inicialmente */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Para aplicar o arredondamento */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito de profundidade */
 }
 
 th, td {
-    border: 1px solid #ddd;
     padding: 12px;
-    text-align: center;
-    font-size: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s; /* Transição suave para hover */
+    text-align: left;
+    
 }
 
 th {
-    background-color: #16a085;
-    color: #fff;
+    background-color: #16a085; /* Cor de fundo para cabeçalho */
+    color: #fff; /* Texto claro para contraste */
+    text-align: left;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+tr:hover td {
+    background-color: #ecf0f1; /* Cor de fundo ao passar o mouse */
 }
 
-tr:hover {
-    background-color: #ddd;
+
+
+/* Estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo mais escuro e suave */
 }
 
-input[type="checkbox"] {
-    transform: scale(1.5);
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px; /* Bordas arredondadas */
+    width: 80%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
 }
 
-footer {
+.close {
+    color: #2980b9; /* Cor do botão de fechar */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #e74c3c; /* Cor ao passar o mouse */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Grade para capítulos */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.grid label {
     text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #888;
+    display: block;
+    background-color: #2980b9; /* Fundo da grade */
+    color: #fff; /* Texto claro */
+    padding: 10px;
+    border-radius: 5px; /* Bordas arredondadas */
+    transition: background-color 0.3s;
+}
+
+.grid label:hover {
+    background-color: #3498db; /* Cor ao passar o mouse */
 }
 
 .buttons {
@@ -75,12 +134,21 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 8px; /* Bordas arredondadas */
 }
 
 button:hover {
     background-color: #13866a;
+
 }
 
-input[type="file"] {
-    display: none;
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #888;
 }
+
+.tabela {
+            display: none; /* Oculta as tabelas por padrão */
+        }
