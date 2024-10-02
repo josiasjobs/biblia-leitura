@@ -1,63 +1,81 @@
-// Função para salvar o estado dos checkboxes e a data
-function saveProgress() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        const dateId = checkbox.id + '_data';
-        const dateText = document.getElementById(dateId).innerText;
-        localStorage.setItem(checkbox.id, checkbox.checked);
-        localStorage.setItem(dateId, dateText);
-    });
-}
-
-// Função para carregar o estado dos checkboxes e a data
-function loadProgress() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        const checked = localStorage.getItem(checkbox.id) === 'true';
-        checkbox.checked = checked;
-
-        const dateId = checkbox.id + '_data';
-        const dateText = localStorage.getItem(dateId);
-        if (dateText) {
-            document.getElementById(dateId).innerText = dateText;
-        }
-    });
-}
-
-// Carregar o progresso ao abrir a página
-window.onload = loadProgress;
-
-
-// Função para marcar a data ao clicar no checkbox
-function marcarData(id) {
-    const checkbox = document.getElementById(id);
-    const dateId = id + '_data';
-    const now = new Date();
-
-    if (checkbox.checked) {
-        const formattedDate = now.toLocaleDateString('pt-BR');
-        document.getElementById(dateId).innerText = formattedDate;
+function toggleTabela(tabelaId) {
+    var tabela = document.getElementById(tabelaId);
+    if (tabela.style.display === "none" || tabela.style.display === "") {
+        tabela.style.display = "block"; // Mostra a tabela
     } else {
-        document.getElementById(dateId).innerText = '';
+        tabela.style.display = "none"; // Oculta a tabela
+    }
+}
+
+// Função para abrir o modal e exibir os capítulos
+function openModal(livro, totalChapters) {
+    var modal = document.getElementById("modal");
+    var modalTitle = document.getElementById("modal-title");
+    var chaptersContainer = document.getElementById("chapters-container");
+
+    modal.style.display = "block";
+
+    // Definir título e capítulos
+    modalTitle.innerHTML = "Capítulos de " + livro.charAt(0).toUpperCase() + livro.slice(1);
+    chaptersContainer.innerHTML = '';
+
+    // Adicionar capítulos em grid com checkbox
+    for (var i = 1; i <= totalChapters; i++) {
+        var chapterLabel = document.createElement("label");
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = livro + "_capitulo_" + i;
+
+        // Carregar progresso salvo do localStorage
+        if (localStorage.getItem(checkbox.id) === "true") {
+            checkbox.checked = true;
+        }
+
+        checkbox.onchange = function () {
+            salvarProgressoCapitulo(this.id, this.checked);
+        };
+
+        chapterLabel.appendChild(checkbox);
+        chapterLabel.appendChild(document.createTextNode(i));
+        chaptersContainer.appendChild(chapterLabel);
+    }
+}
+
+// Função para fechar o modal
+function closeModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "none";
+}
+
+// Fechar o modal se clicar fora dele
+window.onclick = function (event) {
+    var modal = document.getElementById("modal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+// Salvar progresso dos capítulos no localStorage
+function salvarProgressoCapitulo(capitulo, status) {
+    localStorage.setItem(capitulo, status);
+}
+
+// Função de exportação de progresso
+function exportProgress() {
+    var progresso = {};
+
+
+    // Exportar progresso dos capítulos
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key.includes("_capitulo_")) {
+            progresso[key] = localStorage.getItem(key);
+        }
     }
 
-    saveProgress(); // Salva o progresso após alteração
-}
-
-
-// Exportar o progresso para um arquivo JSON
-function exportProgress() {
-    const progress = {};
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        const dateId = checkbox.id + '_data';
-        progress[checkbox.id] = {
-            checked: checkbox.checked,
-            date: document.getElementById(dateId).innerText
-        };
-    });
-
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(progress));
-    const downloadAnchorNode = document.createElement('a');
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(progresso));
+    var downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "progresso_biblia.json");
     document.body.appendChild(downloadAnchorNode);
@@ -65,34 +83,29 @@ function exportProgress() {
     downloadAnchorNode.remove();
 }
 
-// Importar o progresso de um arquivo JSON
+// Função de importação de progresso
 function importProgress(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const progress = JSON.parse(event.target.result);
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            const data = progress[checkbox.id];
-            if (data) {
-                checkbox.checked = data.checked;
-                const dateId = checkbox.id + '_data';
-                document.getElementById(dateId).innerText = data.date || '';
-                localStorage.setItem(checkbox.id, checkbox.checked);
-                localStorage.setItem(dateId, data.date || '');
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        var progresso = JSON.parse(e.target.result);
+
+        
+        // Restaurar progresso dos capítulos
+        Object.keys(progresso).forEach(function (key) {
+            if (key.includes("_capitulo_")) {
+                localStorage.setItem(key, progresso[key]);
+                var chapterCheckbox = document.getElementById(key);
+                if (chapterCheckbox) {
+                    chapterCheckbox.checked = progresso[key] === "true";
+                }
             }
         });
+
+        alert("Progresso importado com sucesso! Recarregue a página para ver as mudanças.");
     };
+
     reader.readAsText(file);
 }
 
-// Função para alternar a visibilidade da tabela
-function toggleTable(tableId) {
-    var table = document.getElementById(tableId);
-    table.style.display = (table.style.display === "none" || table.style.display === "") ? "table" : "none";
-}
-
-// Inicializa as tabelas como ocultas
-document.addEventListener("DOMContentLoaded"), function() {
-    document.getElementById("profetas").style.display = "none";
-    document.getElementById("gregas").style.display = "none";
-}
