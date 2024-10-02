@@ -4,88 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leitura da Bíblia</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            margin: 20px;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
-
-        h2 {
-            color: #16a085;
-            text-align: left;
-            border-bottom: 2px solid #16a085;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        th {
-            background-color: #16a085;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #ddd;
-        }
-
-        input[type="checkbox"] {
-            transform: scale(1.5);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #888;
-        }
-
-        .buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            background-color: #16a085;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #13866a;
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Leitura da Bíblia</h1>
@@ -188,95 +107,10 @@
         </tbody>
     </table>
 
-    <footer>
+     <footer>
         <p>Criado por Josias da Rosa</p>
     </footer>
 
-    <script>
-        // Função para salvar o estado dos checkboxes e a data
-        function saveProgress() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                const dateId = checkbox.id + '_data';
-                const dateText = document.getElementById(dateId).innerText;
-                localStorage.setItem(checkbox.id, checkbox.checked);
-                localStorage.setItem(dateId, dateText);
-            });
-        }
-
-        // Função para carregar o estado dos checkboxes e a data
-        function loadProgress() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                const checked = localStorage.getItem(checkbox.id) === 'true';
-                checkbox.checked = checked;
-
-                const dateId = checkbox.id + '_data';
-                const dateText = localStorage.getItem(dateId);
-                if (dateText) {
-                    document.getElementById(dateId).innerText = dateText;
-                }
-            });
-        }
-
-        // Carregar o progresso ao abrir a página
-        window.onload = loadProgress;
-
-        // Função para marcar a data ao clicar no checkbox
-        function marcarData(id) {
-            const checkbox = document.getElementById(id);
-            const dateId = id + '_data';
-            const now = new Date();
-
-            if (checkbox.checked) {
-                const formattedDate = now.toLocaleDateString('pt-BR');
-                document.getElementById(dateId).innerText = formattedDate;
-            } else {
-                document.getElementById(dateId).innerText = '';
-            }
-
-            saveProgress(); // Salva o progresso após alteração
-        }
-
-        // Exportar o progresso para um arquivo JSON
-        function exportProgress() {
-            const progress = {};
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                const dateId = checkbox.id + '_data';
-                progress[checkbox.id] = {
-                    checked: checkbox.checked,
-                    date: document.getElementById(dateId).innerText
-                };
-            });
-
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(progress));
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "progresso_biblia.json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-        }
-
-        // Importar o progresso de um arquivo JSON
-        function importProgress(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const progress = JSON.parse(event.target.result);
-                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                    const data = progress[checkbox.id];
-                    if (data) {
-                        checkbox.checked = data.checked;
-                        const dateId = checkbox.id + '_data';
-                        document.getElementById(dateId).innerText = data.date || '';
-                        localStorage.setItem(checkbox.id, checkbox.checked);
-                        localStorage.setItem(dateId, data.date || '');
-                    }
-                });
-            };
-            reader.readAsText(file);
-        }
-    </script>
+    <script src="funcoes.js"></script>
 </body>
 </html>
