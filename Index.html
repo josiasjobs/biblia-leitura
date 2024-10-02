@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresso de Leitura da Bíblia</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 20px;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #16a085;
+            text-align: left;
+            border-bottom: 2px solid #16a085;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #16a085;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Progresso de Leitura da Bíblia</h1>
+
+    <h2>Escrituras Hebraicas (Antigo Testamento)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Livro</th>
+                <th>Finalizado?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Gênesis</td><td><input type="checkbox" id="genesis"></td></tr>
+            <tr><td>Êxodo</td><td><input type="checkbox" id="exodo"></td></tr>
+            <tr><td>Levítico</td><td><input type="checkbox" id="levitico"></td></tr>
+            <tr><td>Números</td><td><input type="checkbox" id="numeros"></td></tr>
+            <tr><td>Deuteronômio</td><td><input type="checkbox" id="deuteronomio"></td></tr>
+            <!-- Adicione os demais livros -->
+        </tbody>
+    </table>
+
+    <h2>Escrituras Gregas (Novo Testamento)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Livro</th>
+                <th>Finalizado?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Mateus</td><td><input type="checkbox" id="mateus"></td></tr>
+            <tr><td>Marcos</td><td><input type="checkbox" id="marcos"></td></tr>
+            <tr><td>Lucas</td><td><input type="checkbox" id="lucas"></td></tr>
+            <tr><td>João</td><td><input type="checkbox" id="joao"></td></tr>
+            <!-- Adicione os demais livros -->
+        </tbody>
+    </table>
+
+    <footer>
+        <p>Progresso de leitura criado com ♥ por você</p>
+    </footer>
+
+    <script>
+        // Função para salvar o estado dos checkboxes
+        function saveProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                localStorage.setItem(checkbox.id, checkbox.checked);
+            });
+        }
+
+        // Função para carregar o estado dos checkboxes
+        function loadProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                const checked = localStorage.getItem(checkbox.id) === 'true';
+                checkbox.checked = checked;
+            });
+        }
+
+        // Carregar o progresso ao abrir a página
+        window.onload = loadProgress;
+
+        // Salvar o progresso ao alterar o checkbox
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', saveProgress);
+        });
+    </script>
+</body>
+</html>
