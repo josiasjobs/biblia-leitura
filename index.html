@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leitura da Bíblia</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>LEITURA DA BÍBLIA</h1>
-
 
     <div class="buttons">
         <button onclick="exportProgress()">Exportar Progresso</button>
@@ -16,104 +17,314 @@
         <input type="file" id="fileInput" accept=".json" onchange="importProgress(event)">
     </div>
     <h5>Seu progresso será salvo automaticamente</h5>
-    <h5>Exporte seu progresso, caso mude de disposito</h5>
-  
-    <h2 onclick="toggleTable('hebraicas')">Escrituras Hebraicas</h2>
-    <table id="hebraicas">
-        <thead>
-            <tr>
-                <th>Livro</th>
-                <th>Finalizado?</th>
-                <th>Data</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Gênesis</td><td><input type="checkbox" id="genesis" onclick="marcarData('genesis')"></td><td id="genesis_data"></td></tr>
-            <tr><td>Êxodo</td><td><input type="checkbox" id="exodo" onclick="marcarData('exodo')"></td><td id="exodo_data"></td></tr>
-            <tr><td>Levítico</td><td><input type="checkbox" id="levitico" onclick="marcarData('levitico')"></td><td id="levitico_data"></td></tr>
-            <tr><td>Números</td><td><input type="checkbox" id="numeros" onclick="marcarData('numeros')"></td><td id="numeros_data"></td></tr>
-            <tr><td>Deuteronômio</td><td><input type="checkbox" id="deuteronomio" onclick="marcarData('deuteronomio')"></td><td id="deuteronomio_data"></td></tr>
-            <tr><td>Josué</td><td><input type="checkbox" id="josue" onclick="marcarData('josue')"></td><td id="josue_data"></td></tr>
-            <tr><td>Juízes</td><td><input type="checkbox" id="juizes" onclick="marcarData('juizes')"></td><td id="juizes_data"></td></tr>
-            <tr><td>Rute</td><td><input type="checkbox" id="rute" onclick="marcarData('rute')"></td><td id="rute_data"></td></tr>
-            <tr><td>1 Samuel</td><td><input type="checkbox" id="1samuel" onclick="marcarData('1samuel')"></td><td id="1samuel_data"></td></tr>
-            <tr><td>2 Samuel</td><td><input type="checkbox" id="2samuel" onclick="marcarData('2samuel')"></td><td id="2samuel_data"></td></tr>
-            <tr><td>1 Reis</td><td><input type="checkbox" id="1reis" onclick="marcarData('1reis')"></td><td id="1reis_data"></td></tr>
-            <tr><td>2 Reis</td><td><input type="checkbox" id="2reis" onclick="marcarData('2reis')"></td><td id="2reis_data"></td></tr>
-            <tr><td>1 Crônicas</td><td><input type="checkbox" id="1cronicas" onclick="marcarData('1cronicas')"></td><td id="1cronicas_data"></td></tr>
-            <tr><td>2 Crônicas</td><td><input type="checkbox" id="2cronicas" onclick="marcarData('2cronicas')"></td><td id="2cronicas_data"></td></tr>
-            <tr><td>Esdras</td><td><input type="checkbox" id="esdras" onclick="marcarData('esdras')"></td><td id="esdras_data"></td></tr>
-            <tr><td>Neemias</td><td><input type="checkbox" id="neemias" onclick="marcarData('neemias')"></td><td id="neemias_data"></td></tr>
-            <tr><td>Ester</td><td><input type="checkbox" id="ester" onclick="marcarData('ester')"></td><td id="ester_data"></td></tr>
-            <tr><td>Jó</td><td><input type="checkbox" id="jo" onclick="marcarData('jo')"></td><td id="jo_data"></td></tr>
-            <tr><td>Salmos</td><td><input type="checkbox" id="salmos" onclick="marcarData('salmos')"></td><td id="salmos_data"></td></tr>
-            <tr><td>Provérbios</td><td><input type="checkbox" id="proverbios" onclick="marcarData('proverbios')"></td><td id="proverbios_data"></td></tr>
-            <tr><td>Eclesiastes</td><td><input type="checkbox" id="eclesiastes" onclick="marcarData('eclesiastes')"></td><td id="eclesiastes_data"></td></tr>
-            <tr><td>Cânticos</td><td><input type="checkbox" id="canticos" onclick="marcarData('canticos')"></td><td id="canticos_data"></td></tr>
-            <tr><td>Isaías</td><td><input type="checkbox" id="isaias" onclick="marcarData('isaias')"></td><td id="isaias_data"></td></tr>
-            <tr><td>Jeremias</td><td><input type="checkbox" id="jeremias" onclick="marcarData('jeremias')"></td><td id="jeremias_data"></td></tr>
-            <tr><td>Lamentações</td><td><input type="checkbox" id="lamentacoes" onclick="marcarData('lamentacoes')"></td><td id="lamentacoes_data"></td></tr>
-            <tr><td>Ezequiel</td><td><input type="checkbox" id="ezequiel" onclick="marcarData('ezequiel')"></td><td id="ezequiel_data"></td></tr>
-            <tr><td>Daniel</td><td><input type="checkbox" id="daniel" onclick="marcarData('daniel')"></td><td id="daniel_data"></td></tr>
-            <tr><td>Oseias</td><td><input type="checkbox" id="oseias" onclick="marcarData('oseias')"></td><td id="oseias_data"></td></tr>
-            <tr><td>Joel</td><td><input type="checkbox" id="joel" onclick="marcarData('joel')"></td><td id="joel_data"></td></tr>
-            <tr><td>Amós</td><td><input type="checkbox" id="amos" onclick="marcarData('amos')"></td><td id="amos_data"></td></tr>
-            <tr><td>Obadias</td><td><input type="checkbox" id="obadias" onclick="marcarData('obadias')"></td><td id="obadias_data"></td></tr>
-            <tr><td>Jonas</td><td><input type="checkbox" id="jonas" onclick="marcarData('jonas')"></td><td id="jonas_data"></td></tr>
-            <tr><td>Miqueias</td><td><input type="checkbox" id="miqueias" onclick="marcarData('miqueias')"></td><td id="miqueias_data"></td></tr>
-            <tr><td>Naum</td><td><input type="checkbox" id="naum" onclick="marcarData('naum')"></td><td id="naum_data"></td></tr>
-            <tr><td>Habacuque</td><td><input type="checkbox" id="habacuque" onclick="marcarData('habacuque')"></td><td id="habacuque_data"></td></tr>
-            <tr><td>Sofonias</td><td><input type="checkbox" id="sofonias" onclick="marcarData('sofonias')"></td><td id="sofonias_data"></td></tr>
-            <tr><td>Ageu</td><td><input type="checkbox" id="ageu" onclick="marcarData('ageu')"></td><td id="ageu_data"></td></tr>
-            <tr><td>Zacarias</td><td><input type="checkbox" id="zacarias" onclick="marcarData('zacarias')"></td><td id="zacarias_data"></td></tr>
-            <tr><td>Malaquias</td><td><input type="checkbox" id="malaquias" onclick="marcarData('malaquias')"></td><td id="malaquias_data"></td></tr>
-        </tbody>
-    </table>
+    <h5>Exporte seu progresso, caso mude de dispositivo ou navegador</h5>
 
-    <h2 onclick="toggleTable('gregas')">Escrituras Gregas</h2>
-    <table id="gregas">
-        <thead>
-            <tr>
-                <th>Livro</th>
-                <th>Finalizado?</th>
-                <th>Data</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Mateus</td><td><input type="checkbox" id="mateus" onclick="marcarData('mateus')"></td><td id="mateus_data"></td></tr>
-            <tr><td>Marcos</td><td><input type="checkbox" id="marcos" onclick="marcarData('marcos')"></td><td id="marcos_data"></td></tr>
-            <tr><td>Lucas</td><td><input type="checkbox" id="lucas" onclick="marcarData('lucas')"></td><td id="lucas_data"></td></tr>
-            <tr><td>João</td><td><input type="checkbox" id="joao" onclick="marcarData('joao')"></td><td id="joao_data"></td></tr>
-            <tr><td>Atos</td><td><input type="checkbox" id="atos" onclick="marcarData('atos')"></td><td id="atos_data"></td></tr>
-            <tr><td>Romanos</td><td><input type="checkbox" id="romanos" onclick="marcarData('romanos')"></td><td id="romanos_data"></td></tr>
-            <tr><td>1 Coríntios</td><td><input type="checkbox" id="1corintios" onclick="marcarData('1corintios')"></td><td id="1corintios_data"></td></tr>
-            <tr><td>2 Coríntios</td><td><input type="checkbox" id="2corintios" onclick="marcarData('2corintios')"></td><td id="2corintios_data"></td></tr>
-            <tr><td>Gálatas</td><td><input type="checkbox" id="galatas" onclick="marcarData('galatas')"></td><td id="galatas_data"></td></tr>
-            <tr><td>Efésios</td><td><input type="checkbox" id="efesios" onclick="marcarData('efesios')"></td><td id="efesios_data"></td></tr>
-            <tr><td>Filipenses</td><td><input type="checkbox" id="filipenses" onclick="marcarData('filipenses')"></td><td id="filipenses_data"></td></tr>
-            <tr><td>Colossenses</td><td><input type="checkbox" id="colossenses" onclick="marcarData('colossenses')"></td><td id="colossenses_data"></td></tr>
-            <tr><td>1 Tessalonicenses</td><td><input type="checkbox" id="1tessalonicenses" onclick="marcarData('1tessalonicenses')"></td><td id="1tessalonicenses_data"></td></tr>
-            <tr><td>2 Tessalonicenses</td><td><input type="checkbox" id="2tessalonicenses" onclick="marcarData('2tessalonicenses')"></td><td id="2tessalonicenses_data"></td></tr>
-            <tr><td>1 Timóteo</td><td><input type="checkbox" id="1timoteo" onclick="marcarData('1timoteo')"></td><td id="1timoteo_data"></td></tr>
-            <tr><td>2 Timóteo</td><td><input type="checkbox" id="2timoteo" onclick="marcarData('2timoteo')"></td><td id="2timoteo_data"></td></tr>
-            <tr><td>Tito</td><td><input type="checkbox" id="tito" onclick="marcarData('tito')"></td><td id="tito_data"></td></tr>
-            <tr><td>Filemom</td><td><input type="checkbox" id="filemom" onclick="marcarData('filemom')"></td><td id="filemom_data"></td></tr>
-            <tr><td>Hebreus</td><td><input type="checkbox" id="hebreus" onclick="marcarData('hebreus')"></td><td id="hebreus_data"></td></tr>
-            <tr><td>Tiago</td><td><input type="checkbox" id="tiago" onclick="marcarData('tiago')"></td><td id="tiago_data"></td></tr>
-            <tr><td>1 Pedro</td><td><input type="checkbox" id="1pedro" onclick="marcarData('1pedro')"></td><td id="1pedro_data"></td></tr>
-            <tr><td>2 Pedro</td><td><input type="checkbox" id="2pedro" onclick="marcarData('2pedro')"></td><td id="2pedro_data"></td></tr>
-            <tr><td>1 João</td><td><input type="checkbox" id="1joao" onclick="marcarData('1joao')"></td><td id="1joao_data"></td></tr>
-            <tr><td>2 João</td><td><input type="checkbox" id="2joao" onclick="marcarData('2joao')"></td><td id="2joao_data"></td></tr>
-            <tr><td>3 João</td><td><input type="checkbox" id="3joao" onclick="marcarData('3joao')"></td><td id="3joao_data"></td></tr>
-            <tr><td>Judas</td><td><input type="checkbox" id="judas" onclick="marcarData('judas')"></td><td id="judas_data"></td></tr>
-            <tr><td>Apocalipse</td><td><input type="checkbox" id="apocalipse" onclick="marcarData('apocalipse')"></td><td id="apocalipse_data"></td></tr>
-        </tbody>
-    </table>
+    <h2 onclick="toggleTabela('hebraica')">Escrituras Hebraicas</h2>
+    <div id="hebraica" class="tabela">
+        <table>
+            <thead>
+                <tr>
+                    <th>Livro</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <table>
+                    <tr>
+                        <td><a href="#" onclick="openModal('genesis', 50)">Gênesis</a></td>
 
-     <footer>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('exodus', 40)">Êxodo</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('leviticus', 27)">Levítico</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('numbers', 36)">Números</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('deuteronomy', 34)">Deuteronômio</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('joshua', 24)">Josué</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('judges', 21)">Juízes</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('ruth', 4)">Rute</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1samuel', 31)">1 Samuel</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2samuel', 24)">2 Samuel</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1kings', 22)">1 Reis</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2kings', 25)">2 Reis</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1chronicles', 29)">1 Crônicas</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2chronicles', 36)">2 Crônicas</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('ezra', 10)">Esdras</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('nehemiah', 13)">Neemias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('ester', 10)">Ester</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('job', 42)">Jó</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('psalms', 150)">Salmos</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('proverbs', 31)">Provérbios</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('ecclesiastes', 12)">Eclesiastes</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('song_of_songs', 8)">Cânticos</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('isaiah', 66)">Isaías</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('jeremiah', 52)">Jeremias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('lamentations', 5)">Lamentações</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('ezekiel', 48)">Ezequiel</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('daniel', 12)">Daniel</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('hosea', 14)">Oséias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('joel', 3)">Joel</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('amos', 9)">Amós</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('obadiah', 1)">Obadias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('jonah', 4)">Jonas</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('micah', 7)">Miquéias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('nahum', 3)">Naum</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('habakkuk', 3)">Habacuque</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('zephaniah', 3)">Sofonias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('haggai', 2)">Ageu</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('zechariah', 14)">Zacarias</a></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('malachi', 4)">Malaquias</a></td>
+
+                    </tr>
+                </table>
+    </div>
+
+    <h2 onclick="toggleTabela('grega')">Escrituras Gregas</h2>
+    <div id="grega" class="tabela">
+        <table>
+            <thead>
+                <tr>
+                    <th>Livro</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <table>
+                    <tr>
+                        <td><a href="#" onclick="openModal('mathew', 28)">Mateus</a></td>
+                     
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('mark', 16)">Marcos</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('luke', 24)">Lucas</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('john', 21)">João</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('acts', 28)">Atos</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('romans', 16)">Romanos</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1corinthians', 16)">1 Coríntios</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2corinthians', 13)">2 Coríntios</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('galatians', 6)">Gálatas</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('ephesians', 6)">Efésios</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('philippians', 4)">Filipenses</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('colossians', 4)">Colossenses</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1thessalonians', 5)">1 Tessalonicenses</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2thessalonians', 3)">2 Tessalonicenses</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1timothy', 6)">1 Timóteo</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2timothy', 4)">2 Timóteo</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('titus', 3)">Tito</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('philemon', 1)">Filemom</a></td>
+                      
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('hebrews', 13)">Hebreus</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('james', 5)">Tiago</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1peter', 5)">1 Pedro</a></td>
+                       
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2peter', 3)">2 Pedro</a></td>
+                      
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('1john', 5)">1 João</a></td>
+                      
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('2john', 1)">2 João</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('3john', 1)">3 João</a></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('jude', 1)">Judas</a></td>
+                      
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="openModal('revelation', 22)">Apocalipse</a></td>
+                        
+                    </tr>
+                </table>
+    </div>
+
+    <!-- Modal para os capítulos -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title">Capítulos de </h3>
+            <div id="chapters-container" class="grid"></div>
+        </div>
+    </div>
+
+    <footer>
         <p>Criado por Josias da Rosa</p>
     </footer>
 
     <script src="funcoes.js"></script>
 </body>
+
 </html>
