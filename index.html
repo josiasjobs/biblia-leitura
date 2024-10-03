@@ -11,11 +11,11 @@
 <body>
     <h1>LEITURA DA BÍBLIA</h1>
 
-    <div class="buttons">
-        <button onclick="exportProgress()">Exportar Progresso</button>
-        <button onclick="document.getElementById('fileInput').click()">Importar Progresso</button>
-        <input type="file" id="fileInput" accept=".json" onchange="importProgress(event)">
-    </div>
+   <div class="buttons">
+    <button onclick="exportProgress()">Exportar Progresso</button>
+    <button onclick="document.getElementById('fileInput').click()">Importar Progresso</button>
+    <input type="file" id="fileInput" accept=".json" onchange="importProgress(event)" style="display: none;">
+</div>
     <h5>Seu progresso será salvo automaticamente</h5>
     <h5>Exporte seu progresso, caso mude de dispositivo ou navegador</h5>
 
