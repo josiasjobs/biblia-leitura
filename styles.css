@@ -248,7 +248,7 @@ footer {
             }
         
             .book-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas menores */
+                grid-template-columns: repeat(3, 1fr); /* 4 colunas em telas menores */
             }
         }
         
