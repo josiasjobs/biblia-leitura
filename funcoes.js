@@ -1,3 +1,20 @@
+// Função para alternar a exibição da seção
+function toggleSection() {
+    const section = document.querySelector('.buttons-section');
+    section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
+}
+
+// Exemplo de funções exportProgress e importProgress
+function exportProgress() {
+    console.log("Progresso exportado");
+}
+
+function importProgress(event) {
+    console.log("Progresso importado");
+}
+
+
+
 function toggleTabela(tabelaId) {
     var tabela = document.getElementById(tabelaId);
     if (tabela.style.display === "none" || tabela.style.display === "") {
@@ -56,6 +73,8 @@ window.onclick = function (event) {
 }
 
 
+
+
 // Salvar progresso dos capítulos no localStorage
 function salvarProgressoCapitulo(capitulo, status) {
     localStorage.setItem(capitulo, status);
@@ -91,7 +110,7 @@ function importProgress(event) {
     reader.onload = function (e) {
         var progresso = JSON.parse(e.target.result);
 
-        
+
         // Restaurar progresso dos capítulos
         Object.keys(progresso).forEach(function (key) {
             if (key.includes("_capitulo_")) {
@@ -108,4 +127,3 @@ function importProgress(event) {
 
     reader.readAsText(file);
 }
-
