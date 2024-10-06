@@ -12,7 +12,133 @@
     <h1>LEITURA DA BÍBLIA</h1>
 
     <div class="adjust-container" onclick="toggleSection()">
+        <span>Ajustes</span> <!-- Nome ao lado do ícone --><!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura da Bíblia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>LEITURA DA BÍBLIA</h1>
+
+    <div class="adjust-container" onclick="toggleSection()">
         <span>Ajustes</span> <!-- Nome ao lado do ícone -->
+        <div class="adjust-icon">&#9881;</div> <!-- Ícone de engrenagem -->
+    </div>
+
+    <!-- Seção a ser mostrada/ocultada -->
+    <div class="buttons-section">
+        <div class="buttons">
+            <button onclick="exportProgress()">Exportar Progresso</button>
+            <button onclick="document.getElementById('fileInput').click()">Importar Progresso</button>
+            <input type="file" id="fileInput" accept=".json" onchange="importProgress(event)" style="display: none;">
+        </div>
+        <h5>Seu progresso será salvo automaticamente</h5>
+        <h5>Exporte seu progresso, caso mude de dispositivo ou navegador</h5>
+    </div>
+
+    <div class="bible-container">
+        <div class="section">
+            <div class="section-title">ESCRITURAS HEBRAICO-ARAMAICAS</div>
+            <div class="book-grid hebrew">
+                <a href="#" onclick="openModal('Gênesis', 50)">Gênesis</a>
+                <a href="#" onclick="openModal('Êxodo', 40)">Êxodo</a>
+                <a href="#" onclick="openModal('Levítico', 27)">Levítico</a>
+                <a href="#" onclick="openModal('Números', 36)">Números</a>
+                <a href="#" onclick="openModal('Deuteronômio', 34)">Deuteronômio</a>
+                <a href="#" onclick="openModal('Josué', 24)">Josué</a>
+                <a href="#" onclick="openModal('Juízes', 21)">Juízes</a>
+                <a href="#" onclick="openModal('Rute', 4)">Rute</a>
+                <a href="#" onclick="openModal('1 Samuel', 31)">1 Samuel</a>
+                <a href="#" onclick="openModal('2 Samuel', 24)">2 Samuel</a>
+                <a href="#" onclick="openModal('1 Reis', 22)">1 Reis</a>
+                <a href="#" onclick="openModal('2 Reis', 25)">2 Reis</a>
+                <a href="#" onclick="openModal('1 Crônicas', 29)">1 Crônicas</a>
+                <a href="#" onclick="openModal('2 Crônicas', 36)">2 Crônicas</a>
+                <a href="#" onclick="openModal('Esdras', 10)">Esdras</a>
+                <a href="#" onclick="openModal('Neemias', 13)">Neemias</a>
+                <a href="#" onclick="openModal('Ester', 10)">Ester</a>
+                <a href="#" onclick="openModal('Jó', 42)">Jó</a>
+                <a href="#" onclick="openModal('Salmos', 150)">Salmos</a>
+                <a href="#" onclick="openModal('Provérbios', 31)">Provérbios</a>
+                <a href="#" onclick="openModal('Eclesiastes', 12)">Eclesiastes</a>
+                <a href="#" onclick="openModal('Cânticos', 8)">Cânticos</a>
+                <a href="#" onclick="openModal('Isaías', 66)">Isaías</a>
+                <a href="#" onclick="openModal('Jeremias', 52)">Jeremias</a>
+                <a href="#" onclick="openModal('Lamentações', 5)">Lamentações</a>
+                <a href="#" onclick="openModal('Ezequiel', 48)">Ezequiel</a>
+                <a href="#" onclick="openModal('Daniel', 12)">Daniel</a>
+                <a href="#" onclick="openModal('Oséias', 14)">Oséias</a>
+                <a href="#" onclick="openModal('joel', 3)">Joel</a>
+                <a href="#" onclick="openModal('Amós', 9)">Amós</a>
+                <a href="#" onclick="openModal('Obadias', 1)">Obadias</a>
+                <a href="#" onclick="openModal('Jonas', 4)">Jonas</a>
+                <a href="#" onclick="openModal('Miquéias', 7)">Miquéias</a>
+                <a href="#" onclick="openModal('Naum', 3)">Naum</a>
+                <a href="#" onclick="openModal('Habacuque', 3)">Habacuque</a>
+                <a href="#" onclick="openModal('Sofonias', 3)">Sofonias</a>
+                <a href="#" onclick="openModal('Ageu', 2)">Ageu</a>
+                <a href="#" onclick="openModal('Zacarias', 14)">Zacarias</a>
+                <a href="#" onclick="openModal('Malaquias', 4)">Malaquias</a>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ESCRITURAS GREGAS CRISTÃS</div>
+            <div class="book-grid greek">
+                <a href="#" onclick="openModal('Mateus', 28)">Mateus</a>
+                <a href="#" onclick="openModal('Marcos', 16)">Marcos</a>
+                <a href="#" onclick="openModal('Lucas', 24)">Lucas</a>
+                <a href="#" onclick="openModal('João', 21)">João</a>
+                <a href="#" onclick="openModal('Atos', 28)">Atos</a>
+                <a href="#" onclick="openModal('Romanos', 16)">Romanos</a>
+                <a href="#" onclick="openModal('1 Coríntios', 16)">1 Coríntios</a>
+                <a href="#" onclick="openModal('2 Coríntios', 13)">2 Coríntios</a>
+                <a href="#" onclick="openModal('Gálatas', 6)">Gálatas</a>
+                <a href="#" onclick="openModal('Efésios', 6)">Efésios</a>
+                <a href="#" onclick="openModal('Filipenses', 4)">Filipenses</a>
+                <a href="#" onclick="openModal('Colossenses', 4)">Colossenses</a>
+                <a href="#" onclick="openModal('1 Tessalonicenses', 5)">1 Tessalonicenses</a>
+                <a href="#" onclick="openModal('2 Tessalonicenses', 3)">2 Tessalonicenses</a>
+                <a href="#" onclick="openModal('1 Timóteo', 6)">1 Timóteo</a>
+                <a href="#" onclick="openModal('2 Timóteo', 4)">2 Timóteo</a>
+                <a href="#" onclick="openModal('Tito', 3)">Tito</a>
+                <a href="#" onclick="openModal('Filemom', 1)">Filemom</a>
+                <a href="#" onclick="openModal('Hebreus', 13)">Hebreus</a>
+                <a href="#" onclick="openModal('Tiago', 5)">Tiago</a>
+                <a href="#" onclick="openModal('1 Pedro', 5)">1 Pedro</a>
+                <a href="#" onclick="openModal('2 Pedro', 3)">2 Pedro</a>
+                <a href="#" onclick="openModal('1 João', 5)">1 João</a>
+                <a href="#" onclick="openModal('2 João', 1)">2 João</a>
+                <a href="#" onclick="openModal('3 João', 1)">3 João</a>
+                <a href="#" onclick="openModal('Judas', 1)">Judas</a>
+                <a href="#" onclick="openModal('Apocalipse', 22)">Apocalipse</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para os capítulos -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title">Capítulos de </h3>
+            <div id="chapters-container" class="grid"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Criado por DJR STORE</p>
+    </footer>
+
+    <script src="funcoes.js"></script>
+</body>
+
+</html>
         <div class="adjust-icon">&#9881;</div> <!-- Ícone de engrenagem -->
     </div>
 
