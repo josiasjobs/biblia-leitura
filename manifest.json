@@ -1,0 +1,21 @@
+{
+    "name": "Leia Bíblia",
+    "short_name": "PWA",
+    "description": "Uma forma fácil de controlar o progresso de sua leitura.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2F3BA2",
+    "icons": [
+        {
+            "src": "icons/teste192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/teste512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
