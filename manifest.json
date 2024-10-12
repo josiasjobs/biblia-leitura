@@ -2,7 +2,7 @@
     "name": "Leia Bíblia",
     "short_name": "Leia Bíblia",
     "description": "Uma forma fácil de controlar o progresso de sua leitura.",
-    "start_url": "/biblia-leitura",
+    "start_url": "/biblia-leitura/#",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#2F3BA2",
