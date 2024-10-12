@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leitura da Bíblia</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Link para o arquivo de manifesto -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Adicionando um ícone (opcional, mas recomendado para PWA) -->
+    <link rel="icon" type="image/png" href="icons/icon-192x192.png">
+ 
+    <!-- Meta tags para PWA (opcional, mas recomendado) -->
+    <meta name="theme-color" content="#2F3BA2">
+
 </head>
 
 <body>
@@ -22,6 +31,7 @@
             <button onclick="exportProgress()">Exportar Progresso</button>
             <button onclick="document.getElementById('fileInput').click()">Importar Progresso</button>
             <button onclick="printProgress()">Imprimir Programação</button> <!-- Botão de impressão -->
+            <button id="installBtn" style="display:none;">Instalar App</button>
             <input type="file" id="fileInput" accept=".json" onchange="importProgress(event)" style="display: none;">
         </div>
         <h5>Seu progresso será salvo automaticamente</h5>
