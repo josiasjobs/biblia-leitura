@@ -1,3 +1,39 @@
+let deferredPrompt;
+
+        // Verifica se o navegador suporta Service Workers
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(function(registration) {
+                    console.log('Service Worker registrado com sucesso:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Falha ao registrar o Service Worker:', error);
+                });
+        }
+
+        // Ouve o evento 'beforeinstallprompt' e armazena o prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').style.display = 'block';
+        });
+
+        // Lida com o clique no botão de instalação
+        const installBtn = document.getElementById('installBtn');
+        installBtn.addEventListener('click', async () => {
+            installBtn.style.display = 'none';
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                console.log('Usuário aceitou a instalação do PWA');
+            } else {
+                console.log('Usuário recusou a instalação do PWA');
+            }
+            deferredPrompt = null;
+        });
+
+
+
 // Função para alternar a exibição da seção
 function toggleSection() {
     const section = document.querySelector('.buttons-section');
