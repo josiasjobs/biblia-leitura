@@ -2,7 +2,7 @@
     "name": "Leia Bíblia",
     "short_name": "PWA",
     "description": "Uma forma fácil de controlar o progresso de sua leitura.",
-    "start_url": "/index.html",
+    "start_url": "/biblia-leitura.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#2F3BA2",
